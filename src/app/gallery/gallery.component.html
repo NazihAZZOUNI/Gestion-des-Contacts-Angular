@@ -1,0 +1,17 @@
+<p></p>
+<div class="container">
+  <div class="card">
+
+    <div class="card card-header bg-primary text-white" >Gallery</div>
+    <div class="card-body">
+      <form #f="ngForm" (ngSubmit)="onSearch(f.value)">
+        <div class="form-group">
+          <label class=".col-form-label">Mot Clé: </label>
+          <input required="" type="text" ngModel name="motCle" ngModel>
+          <button [disabled]="!f.valid" class="btn btn-primary" type="submit"> Chercher</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

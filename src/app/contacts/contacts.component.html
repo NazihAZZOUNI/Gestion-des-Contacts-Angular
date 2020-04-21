@@ -1,0 +1,68 @@
+<p></p>
+<div class="container">
+  <div class="card">
+
+    <div class="card card-header bg-primary text-white" >Contacts</div>
+    <div class="card-body">
+
+      <form #f="ngForm" (ngSubmit)="onSearch()">
+        <div class="form-group">
+          <label class=".col-form-label">Mot Clé: </label>
+          <input type="text" [(ngModel)] = "motCle" name="motCle">
+          <button  class="btn btn-primary" type="submit"> Chercher</button>
+        </div>
+
+      </form>
+      <div>
+        <h4>Liste des Contacts:</h4>
+
+      </div>
+
+      <div>
+
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Date Naissance</th>
+            <th scope="col">Email</th>
+            <th scope="col"></th>
+
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let c of pageContacts?.content">
+            <td>{{c.id}}</td>
+            <td>{{c.nom}}</td>
+            <td>{{c.prenom}}</td>
+            <td>{{c.dateNaissance}}</td>
+            <td>{{c.email}}</td>
+            <td>
+              <a (click)="onEditContact(c.id)" class="clickable">Edit &nbsp;&nbsp;</a>
+              <a (click)="onDeleteContact(c)" class="clickable">Delete</a>
+            </td>
+
+          </tr>
+          </tbody>
+        </table>
+        <div class="container">
+          <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li [ngClass]="{'active' : i == currentPage}" *ngFor="let p of pages;let i = index" class="page-item">
+              <a class="page-link clickable" (click)="goToPage(i)">{{i}}</a>
+            </li>
+          </ul>
+          </nav>
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
